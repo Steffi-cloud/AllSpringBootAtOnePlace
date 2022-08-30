@@ -21,7 +21,18 @@
         <java.version>1.8</java.version>
 	
     </properties>
-  
+  <distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>demorelease</name>
+			<url>http://localhost:8085/repository/demorelease/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>demosnapshot</name>
+			<url>http://localhost:8085/repository/demosnapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
     <build>
         <plugins>
