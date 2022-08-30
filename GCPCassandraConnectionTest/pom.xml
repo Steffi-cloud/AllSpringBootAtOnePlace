@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.3</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>GCPCassandraConnectionTest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>GCPCassandraConnectionTest</name>
+	<description>Demo project for Spring Boot</description>
+	<!-- <properties> <java.version>1.8</java.version> </properties> -->
+	<dependencies>
+		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-configuration</artifactId> 
+			<version>1.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-core</artifactId>
+			<version>4.13.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.stargate.grpc</groupId>
+			<artifactId>grpc-proto</artifactId>
+			<version>1.0.41</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.grpc/grpc-netty-shaded -->
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-netty-shaded</artifactId>
+			<version>1.49.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.wagon</groupId>
+			<artifactId>wagon-http-lightweight</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.grpc/grpc-core -->
+		<!-- https://mvnrepository.com/artifact/io.grpc/grpc-core -->
+		<!-- <dependency> <groupId>io.grpc</groupId> <artifactId>grpc-core</artifactId> 
+			<version>1.49.0</version> </dependency> -->
+
+		<!-- <dependency> <groupId>io.grpc</groupId> <artifactId>grpc-netty</artifactId> 
+			<version>1.9.1</version> </dependency> -->
+
+
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-tcnative -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-tcnative</artifactId>
+			<version>2.0.54.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.wagon/wagon-ftp -->
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.wagon/wagon-http -->
+		<!-- <dependency> <groupId>org.apache.maven.wagon</groupId> <artifactId>wagon-http</artifactId> 
+			<version>3.3.3</version> </dependency> -->
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>demorelease</name>
+			<url>http://localhost:8085/repository/demorelease/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>demosnapshot</name>
+			<url>http://localhost:8085/repository/demosnapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId> 
+				<configuration> <skip>true</skip> </configuration> </plugin> -->
+			<!-- <plugin> <groupId>org.sonatype.plugins</groupId> <artifactId>nexus-staging-maven-plugin</artifactId> 
+				<version>1.6.13</version> <executions> <execution> <id>default-deploy</id> 
+				<phase>deploy</phase> <goals> <goal>deploy</goal> </goals> </execution> </executions> 
+				<configuration> <serverId>nexus</serverId> <nexusUrl>http://localhost:8085/testrepo</nexusUrl> 
+				explicit matching using the staging profile id <stagingProfileId>129341e09f2ee275</stagingProfileId> 
+				</configuration> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.felix</groupId> <artifactId>maven-bundle-plugin</artifactId> 
+				<extensions>true</extensions> </plugin> -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nxrm3-maven-plugin</artifactId>
+				<!-- replace plugin version with the latest available -->
+				<!-- https://search.maven.org/search?q=a:nxrm3-maven-plugin -->
+				<version>1.0.3</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<nexusUrl>http://localhost:8085/repository/test/</nexusUrl>
+
+					<!-- The server "id" element from settings to use authentication from 
+						settings.xml -->
+					<serverId>nexus</serverId>
+
+					<!-- Which repository to deploy to -->
+					<repository>maven-central</repository>
+
+					<!-- Skip the staging deploy mojo -->
+					<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+				</configuration>
+
+			</plugin>
+		</plugins>
+		<!-- <extensions> <extension> </extension> </extensions> -->
+
+	</build>
+
+</project>
