@@ -21,6 +21,9 @@
         <java.version>1.8</java.version>
 	
     </properties>
+<modules>
+   <module>GCPCassandraConnectionTest</module>
+</modules>
   <distributionManagement>
 		<repository>
 			<id>nexus</id>
