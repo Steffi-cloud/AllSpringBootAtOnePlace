@@ -23,6 +23,7 @@
     </properties>
 <modules>
    <module>GCPCassandraConnectionTest</module>
+<module>sampleweb</module>
 </modules>
   <distributionManagement>
 		<repository>
