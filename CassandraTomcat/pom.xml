@@ -89,49 +89,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId> 
-				<configuration> <skip>true</skip> </configuration> </plugin> -->
-			<!-- <plugin> <groupId>org.sonatype.plugins</groupId> <artifactId>nexus-staging-maven-plugin</artifactId> 
-				<version>1.6.13</version> <executions> <execution> <id>default-deploy</id> 
-				<phase>deploy</phase> <goals> <goal>deploy</goal> </goals> </execution> </executions> 
-				<configuration> <serverId>nexus</serverId> <nexusUrl>http://localhost:8085/testrepo</nexusUrl> 
-				explicit matching using the staging profile id <stagingProfileId>129341e09f2ee275</stagingProfileId> 
-				</configuration> </plugin> -->
-			<!-- <plugin> <groupId>org.apache.felix</groupId> <artifactId>maven-bundle-plugin</artifactId> 
-				<extensions>true</extensions> </plugin> -->
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nxrm3-maven-plugin</artifactId>
-				<!-- replace plugin version with the latest available -->
-				<!-- https://search.maven.org/search?q=a:nxrm3-maven-plugin -->
-				<version>1.0.3</version>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<nexusUrl>http://localhost:8085/repository/test/</nexusUrl>
-
-					<!-- The server "id" element from settings to use authentication from 
-						settings.xml -->
-					<serverId>nexus</serverId>
-
-					<!-- Which repository to deploy to -->
-					<repository>maven-central</repository>
-
-					<!-- Skip the staging deploy mojo -->
-					<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
-				</configuration>
-
-			</plugin>
+		
+		
 		</plugins>
-		<!-- <extensions> <extension> </extension> </extensions> -->
+		
 
 	</build>
 
