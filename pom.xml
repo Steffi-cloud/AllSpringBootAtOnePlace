@@ -25,6 +25,8 @@
    <module>GCPCassandraConnectionTest</module>
 
     <module>sampleweb</module>
+  <module>CassandraTomcat</module>
+
 
 </modules>
   <distributionManagement>
